@@ -8,31 +8,31 @@ namespace ShoppingSystem
 {
     internal class Controller
     {
-        public string ProcessProductCommand(List<string> args)
+        public string Product(List<string> args)
         {
             //TODO: Add some logic here …
             throw new NotImplementedException();
         }
 
-        public string ProcessServiceCommand(List<string> args)
+        public string Service(List<string> args)
         {
             //TODO: Add some logic here …
             throw new NotImplementedException();
         }
 
-        public string ProcessCheckoutCommand(List<string> args)
+        public string Checkout(List<string> args)
         {
             //TODO: Add some logic here …
             throw new NotImplementedException();
         }
 
-        public string ProcessInfoCommand(List<string> args)
+        public string Info(List<string> args)
         {
             //TODO: Add some logic here …
             throw new NotImplementedException();
         }
 
-        public string ProcessEndCommand()
+        public string End()
         {
             //TODO: Add some logic here …
             throw new NotImplementedException();
