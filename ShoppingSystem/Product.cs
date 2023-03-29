@@ -14,7 +14,7 @@ namespace ShoppingSystem
         public string Name { get => name; set => name = value; }
         public double Price { get => price; set => price = value; }
 
-        public Product(string name, double price)
+        protected Product(string name, double price)
         {
             Name = name;
             Price = price;
