@@ -17,7 +17,21 @@ namespace ShoppingSystem
             CustomerName = customerName;
         }
 
-        public string CustomerName { get => customerName; set => customerName = value; }
+        public string CustomerName 
+        { 
+            get { return customerName; }
+            set
+            {
+                if (customerName.Length <= 40 && customerName.Length >= 2)
+                {
+                    customerName = value;
+                }
+                else 
+                {
+                    throw new InvalidProgramException("Name must be between 2 and 40 characters!");
+                }
+            }
+        }
 
         public void AddProduct(Product product)
         {
