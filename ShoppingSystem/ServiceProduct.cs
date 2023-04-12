@@ -15,11 +15,27 @@ namespace ShoppingSystem
             Time = time;
         }
 
-        public double Time { get => time; set => time = value; }
+        public double Time 
+        {
+            get { return time; }
+            set 
+            {
+                if (time > 0)
+                {
+                    time = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Time must be greater than 0!");
+                }
+            }
+        }
 
         public override string ToString()
         {
-            return "";
+            return $"Name: {Name}\n" +
+                $"Price: {Price}\n" +
+                $"Time: {Time}";
         }
     }
 }
