@@ -12,28 +12,53 @@ namespace ShoppingSystem
         private string name;
         private double price;
 
-        public string Name { get => name; set => name = value; }
-        public double Price { get => price; set => price = value; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (name.Length < 3 && name.Length > 30)
+                {
+                    throw new ArgumentException(String.Format("Name should be between 3 and 30 characters!"));
+                }
+                else
+                {
+                    this.name = value;
+                }
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (Price < 0)
+                {
+                    throw new ArgumentException(String.Format("Price should be 0 or positive!"));
+                }
+                else
+                {
+                    this.price = value;
+                }
+            }
+        }
 
 
         protected Product(string name, double price)
         {
             Name = name;
             Price = price;
-
-            if (name.Length < 3 && name.Length > 30)
-            {
-                throw new ArgumentException(String.Format("Name should be between 3 and 30 characters!"));
-            }
-            if (Price < 0)
-            {
-                throw new ArgumentException(String.Format("Price should be 0 or positive!"));
-            }
         }
 
         public override string ToString()
         {
-            return $"The Product's name is {name}, and it costs{price}";
+            return String.Format( $"The Product's name is {name}, and it costs{price}.");
         }
     }
 }
