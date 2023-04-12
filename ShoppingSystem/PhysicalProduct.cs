@@ -9,12 +9,8 @@ namespace ShoppingSystem
 {
     internal class PhysicalProduct : Product
     {
-        private string name;
-        private double price;
         private double weight;
 
-        public string Name { get => name; set => name = value; }
-        public double Price { get => price; set => price = value; }
         public double Weight { get => weight; set => weight = value; }
 
         public PhysicalProduct(string name, double price, double weight) : base(name, price)
