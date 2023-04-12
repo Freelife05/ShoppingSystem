@@ -20,7 +20,7 @@ namespace ShoppingSystem
             get { return time; }
             set 
             {
-                if (time > 0)
+                if (value > 0)
                 {
                     time = value;
                 }
@@ -33,9 +33,7 @@ namespace ShoppingSystem
 
         public override string ToString()
         {
-            return $"Name: {Name}\n" +
-                $"Price: {Price}\n" +
-                $"Time: {Time}";
+            return $"Time: {time}";
         }
     }
 }

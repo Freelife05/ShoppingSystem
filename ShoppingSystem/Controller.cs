@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShoppingSystem
@@ -17,7 +18,7 @@ namespace ShoppingSystem
             double price = double.Parse(args[1]);
             double weight = double.Parse(args[2]);
             products.Add(new PhysicalProduct(name, price, weight));
-            return $"Created new Physical Product";
+            return $"The current customer has bought {name}";
         }
 
         public string Service(List<string> args)
@@ -26,19 +27,21 @@ namespace ShoppingSystem
             double price = double.Parse(args[1]);
             double weight = double.Parse(args[2]);
             products.Add(new ServiceProduct(name, price, weight));
-            return $"Created new Service Product";
+            return $"The current customer has applied for {name} service";
         }
 
         public string Checkout(List<string> args)
         {
             Receipt receipt = new Receipt(args[0]);
+            double total = 0;
             foreach (var item in products)
             {
                 receipt.AddProduct(item);
+                total += item.Price;
             }
             receipts.Add(receipt);
             products.Clear();
-            return "Checked out";
+            return $"Total Bill: ${Math.Round(total,2)}";
         }
 
         public string Info(List<string> args)
@@ -47,17 +50,23 @@ namespace ShoppingSystem
             string fullInfo = "";
             if (info == "Customer")
             {
-                foreach (var item in products)
-                {
-                    fullInfo += $"{item.ToString()}\n";
-                }
+                fullInfo += $"Current customer has:\n";
+                fullInfo += $"Products: {products.Count}";
                 return fullInfo;
             }
             else if (info == "Shop")
             {
-                foreach (var item in receipts)
+                fullInfo += "Receipts: \n";
+                if (receipts.Count == 0)
                 {
-                    fullInfo += $"{item.ToString()}\n";
+                    fullInfo += "No receipts";
+                }
+                else
+                {
+                    foreach (var item in receipts)
+                    {
+                        fullInfo += $"{item.ToString()}\n";
+                    }
                 }
                 return fullInfo;
             }
@@ -69,7 +78,7 @@ namespace ShoppingSystem
 
         public string End()
         {
-            Console.WriteLine($"Amount of customers; {receipts.Count}");
+            Console.WriteLine($"Total customers: {receipts.Count}");
             Environment.Exit(0);
             return "";
         }

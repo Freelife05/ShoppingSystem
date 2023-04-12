@@ -20,7 +20,7 @@ namespace ShoppingSystem
             }
             set
             {
-                if (name.Length < 3 && name.Length > 30)
+                if (value.Length < 3 && value.Length > 30)
                 {
                     throw new ArgumentException(String.Format("Name should be between 3 and 30 characters!"));
                 }

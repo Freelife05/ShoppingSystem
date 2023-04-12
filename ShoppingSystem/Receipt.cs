@@ -22,7 +22,7 @@ namespace ShoppingSystem
             get { return customerName; }
             set
             {
-                if (customerName.Length <= 40 && customerName.Length >= 2)
+                if (value.Length <= 40 && value.Length >= 2)
                 {
                     customerName = value;
                 }
@@ -41,16 +41,18 @@ namespace ShoppingSystem
         public override string ToString()
         {
             double totalPrice = 0;
-            string allProducts = "";
+            string fullString = "";
             foreach (var item in products) 
             {
                 totalPrice += item.Price;
-                allProducts += $"{item.Name}\n";
+                fullString += $"Name: {item.Name}\n";
+                fullString += $"Price: {item.Price}\n";
+                fullString += $"{item.ToString()}\n";
             }
             return $"Receipt of {customerName}\n" +
                 $"Total Price: {totalPrice}\n" +
                 $"Products:\n" +
-                $"{allProducts}";
+                $"{fullString}\n";
         }
     }
 }

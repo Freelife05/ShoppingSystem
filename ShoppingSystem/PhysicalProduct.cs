@@ -19,7 +19,7 @@ namespace ShoppingSystem
             }
             set
             {
-                if (Weight <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException(String.Format("Weight cannot be less or equal to 0!"));
                 }
@@ -37,7 +37,7 @@ namespace ShoppingSystem
 
         public override string ToString()
         {
-            return String.Format($"The product's Name is {Name}, its price is {Price} and its weight is {weight}");
+            return $"Weight: {weight}";
         }
     }
 }
