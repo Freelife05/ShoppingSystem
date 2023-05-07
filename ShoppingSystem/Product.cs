@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ShoppingSystem
 {
-    internal class Product
+    abstract class Product
     {
         private string name;
         private double price;
